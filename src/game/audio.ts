@@ -283,7 +283,7 @@ class SoundEngine {
       this.startCue.currentTime = 0;
     }
 
-    const audio = new Audio('/audio/jai_babu_notification.mp3');
+    const audio = new Audio(`${import.meta.env.BASE_URL}audio/jai_babu_notification.mp3`);
     audio.volume = 0.7;
     audio.preload = 'auto';
     this.startCue = audio;
@@ -301,7 +301,7 @@ class SoundEngine {
       this.backgroundMusic.currentTime = 0;
     }
 
-    const audio = new Audio('/music/varanasi_charge_loop.mp3');
+    const audio = new Audio(`${import.meta.env.BASE_URL}music/varanasi_charge_loop.mp3`);
     audio.loop = true;
     audio.volume = 0.45;
     audio.preload = 'auto';
