@@ -5,6 +5,7 @@ import { defineConfig } from 'vite';
 
 export default defineConfig(() => {
   return {
+    base: '/VARANASI_RUDHRA_CHARGE/',
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {
