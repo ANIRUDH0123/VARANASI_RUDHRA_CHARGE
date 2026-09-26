@@ -1,0 +1,6 @@
+{
+  "name": "Varanasi: Rudhra's Charge",
+  "description": "Epic endless runner inspired by VARANASI with Mahesh Babu as Rudhra charging on the sacred Nandi bull with the divine Trishul through the ancient ghats of Varanasi.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
