@@ -1124,126 +1124,310 @@ export class GameRenderer {
     ctx.save();
     ctx.translate(0, bodyBob + duckYOffset);
     ctx.rotate(riderLean);
+    ctx.translate(0, -23);
+    ctx.scale(1, 1.12);
+    ctx.translate(0, 23);
 
     if (duckFactor > 0.4) {
       // Forward charging crouch, rider sunk low and leaning into the bull
-      ctx.fillStyle = safariShirt;
+      ctx.fillStyle = '#633b25';
       ctx.beginPath();
-      ctx.roundRect(12, -34, 26, 12, 5);
+      ctx.moveTo(15, -35);
+      ctx.lineTo(34, -35);
+      ctx.lineTo(33, -30);
+      ctx.lineTo(30, -23);
+      ctx.lineTo(19, -23);
+      ctx.lineTo(16, -29);
+      ctx.closePath();
       ctx.fill();
 
-      ctx.fillStyle = '#3f2212';
-      ctx.fillRect(26, -30, 10, 4);
-      ctx.fillStyle = '#fbcfe8';
-      ctx.fillRect(34, -30, 6, 4);
-
-      ctx.fillStyle = '#fbcfe8';
+      ctx.fillStyle = '#80502f';
       ctx.beginPath();
-      ctx.arc(36, -31, 5.8, 0, Math.PI * 2);
+      ctx.moveTo(15, -34);
+      ctx.lineTo(24, -33);
+      ctx.lineTo(30, -25);
+      ctx.lineTo(24, -24);
+      ctx.closePath();
       ctx.fill();
 
-      ctx.fillStyle = '#18181b';
+      // Beads remain visible over the charging stance.
+      ctx.strokeStyle = '#241912';
+      ctx.lineWidth = 1;
       ctx.beginPath();
-      ctx.arc(36, -31, 6.2, -Math.PI * 0.8, Math.PI * 0.15);
-      ctx.fill();
-      ctx.fillRect(25, -36, 13, 3.5);
+      ctx.moveTo(19, -34);
+      ctx.quadraticCurveTo(25, -27, 31, -27);
+      ctx.stroke();
+      for (let bead = 0; bead < 5; bead++) {
+        ctx.fillStyle = bead % 2 === 0 ? '#211915' : '#67452e';
+        ctx.beginPath();
+        ctx.arc(20 + bead * 2.5, -33 + bead * 1.5, 0.8, 0, Math.PI * 2);
+        ctx.fill();
+      }
 
-      this.drawTrishul(ctx, 38, -29, 0.45, trishulGold, flagOrange, time);
+      // Warm profile framed by swept-back curls and neat facial hair.
+      ctx.fillStyle = '#e4c09d';
+      ctx.beginPath();
+      ctx.ellipse(36, -31, 5.3, 6.1, 0.15, 0, Math.PI * 2);
+      ctx.fill();
+
+      ctx.fillStyle = '#38291f';
+      ctx.beginPath();
+      ctx.moveTo(32, -32);
+      ctx.quadraticCurveTo(34, -30, 38, -30);
+      ctx.quadraticCurveTo(41, -31, 42, -33);
+      ctx.lineTo(42, -29);
+      ctx.quadraticCurveTo(40, -26, 37, -25.5);
+      ctx.quadraticCurveTo(34, -26, 32, -29);
+      ctx.closePath();
+      ctx.fill();
+
+      ctx.fillStyle = '#1c1715';
+      ctx.beginPath();
+      ctx.moveTo(29, -35);
+      ctx.quadraticCurveTo(29, -40, 34, -39);
+      ctx.quadraticCurveTo(38, -42, 41, -37);
+      ctx.quadraticCurveTo(44, -34, 41, -31);
+      ctx.quadraticCurveTo(39, -34, 37, -34);
+      ctx.quadraticCurveTo(34, -32, 30, -34);
+      ctx.closePath();
+      ctx.fill();
+      ctx.fillStyle = '#33241d';
+      ctx.beginPath();
+      ctx.arc(31, -37, 2.2, 0, Math.PI * 2);
+      ctx.arc(35, -39, 2.5, 0, Math.PI * 2);
+      ctx.arc(39, -37, 2.4, 0, Math.PI * 2);
+      ctx.fill();
+
+      ctx.fillStyle = '#38291f';
+      ctx.beginPath();
+      ctx.moveTo(33, -33.2);
+      ctx.quadraticCurveTo(35, -34.5, 37, -33.1);
+      ctx.quadraticCurveTo(39, -34.2, 41, -32.8);
+      ctx.quadraticCurveTo(39, -32.3, 37, -32.8);
+      ctx.quadraticCurveTo(35, -32.2, 33, -33.2);
+      ctx.closePath();
+      ctx.fill();
+
+      this.drawTrishul(ctx, 38, -29, Math.PI / 4, trishulGold, flagOrange, time);
     } else {
       // Rider seated tall and naturally on the bull, with the visible profile and movement of the reference.
-      ctx.fillStyle = safariShadow;
+      // Near-side leg: broad bent thigh, readable knee, calf and boot.
+      ctx.fillStyle = '#74462c';
       ctx.beginPath();
-      ctx.roundRect(18, -26, 10, 17, [4, 4, 2, 2]);
-      ctx.fill();
-
-      ctx.fillStyle = safariShirt;
-      ctx.beginPath();
-      ctx.roundRect(15, -42, 18, 18, [7, 7, 4, 4]);
-      ctx.fill();
-
-      // lean forward and weight into the bull
-      ctx.fillStyle = '#fbcfe8';
-      ctx.beginPath();
-      ctx.moveTo(17, -40);
-      ctx.lineTo(24, -29);
-      ctx.lineTo(31, -40);
+      ctx.moveTo(23, -25);
+      ctx.quadraticCurveTo(19, -23.5, 18.5, -20.5);
+      ctx.quadraticCurveTo(17.5, -17.5, 20.5, -15.2);
+      ctx.quadraticCurveTo(24, -13.8, 27, -15.2);
+      ctx.quadraticCurveTo(31, -17.2, 31.5, -20.2);
+      ctx.quadraticCurveTo(30, -23.8, 26, -25);
       ctx.closePath();
       ctx.fill();
 
-      ctx.strokeStyle = '#18181b';
-      ctx.lineWidth = 1.2;
+      ctx.fillStyle = '#63402a';
       ctx.beginPath();
-      ctx.moveTo(17, -39);
-      ctx.quadraticCurveTo(24, -32, 31, -39);
+      ctx.moveTo(22, -16);
+      ctx.quadraticCurveTo(23, -13.5, 25.5, -11.5);
+      ctx.quadraticCurveTo(27, -9.5, 26.5, -7.5);
+      ctx.lineTo(27, -6.5);
+      ctx.quadraticCurveTo(29.5, -5.8, 32, -6.7);
+      ctx.quadraticCurveTo(32.5, -7.6, 30.8, -9.5);
+      ctx.quadraticCurveTo(30, -12, 31, -13.5);
+      ctx.quadraticCurveTo(30, -16, 27, -16.5);
+      ctx.closePath();
+      ctx.fill();
+      ctx.fillStyle = '#2b211a';
+      ctx.beginPath();
+      ctx.ellipse(30, -6.5, 3, 1.45, 0.05, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.fillStyle = '#966344';
+      ctx.beginPath();
+      ctx.ellipse(26.5, -16, 3, 2, 0.12, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.strokeStyle = '#503321';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(24, -16.5);
+      ctx.quadraticCurveTo(26.5, -15, 29, -16.2);
       ctx.stroke();
-      ctx.fillStyle = '#f59e0b';
-      ctx.beginPath();
-      ctx.arc(24, -33, 1.4, 0, Math.PI * 2);
-      ctx.fill();
 
-      ctx.fillStyle = safariShirt;
+      ctx.fillStyle = '#74462c';
       ctx.beginPath();
-      ctx.moveTo(20, -40);
-      ctx.lineTo(30, -32);
-      ctx.lineTo(35, -30);
-      ctx.lineTo(28, -27);
+      ctx.moveTo(23, -42);
+      ctx.lineTo(29, -42);
+      ctx.quadraticCurveTo(33, -41, 33, -37);
+      ctx.lineTo(32, -29);
+      ctx.lineTo(28, -24);
+      ctx.lineTo(20, -24);
+      ctx.lineTo(17, -30);
+      ctx.lineTo(17, -38);
+      ctx.quadraticCurveTo(18, -41, 23, -42);
       ctx.closePath();
       ctx.fill();
-      ctx.fillStyle = '#3f2212';
-      ctx.fillRect(30, -31, 4, 5);
-      ctx.fillStyle = '#fbcfe8';
-      ctx.fillRect(34, -30, 4, 4);
 
-      // Head and hair shaped to match the heroic profile.
-      ctx.fillStyle = '#fbcfe8';
+      // Layered, worn cloth and a dark shoulder seam.
+      ctx.fillStyle = '#94603a';
       ctx.beginPath();
-      ctx.ellipse(25, -48, 6.2, 7.8, 0.12, 0, Math.PI * 2);
-      ctx.fill();
-
-      ctx.fillStyle = '#18181b';
-      ctx.beginPath();
-      ctx.arc(25, -46, 5.2, 0, Math.PI);
-      ctx.fill();
-      ctx.beginPath();
-      ctx.arc(27, -48, 2.1, 0, Math.PI * 2);
-      ctx.fill();
-      ctx.fillStyle = '#450a0a';
-      ctx.beginPath();
-      ctx.arc(27, -46, 1.8, 0, Math.PI * 2);
-      ctx.fill();
-      ctx.fillStyle = '#ffffff';
-      ctx.fillRect(26, -47, 2.1, 0.7);
-
-      ctx.fillStyle = '#0f172a';
-      ctx.beginPath();
-      ctx.arc(27, -50, 1.2, 0, Math.PI * 2);
+      ctx.moveTo(18, -39);
+      ctx.lineTo(23, -30);
+      ctx.lineTo(30, -39);
+      ctx.closePath();
       ctx.fill();
 
+      ctx.strokeStyle = '#382419';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(18, -39);
+      ctx.quadraticCurveTo(23, -34, 30, -39);
+      ctx.stroke();
+
+      // Exposed neck and the arm reaching forward with the trishul.
+      ctx.fillStyle = '#e4c09d';
+      ctx.beginPath();
+      ctx.moveTo(23, -43);
+      ctx.lineTo(29, -42);
+      ctx.lineTo(29, -37);
+      ctx.lineTo(24, -36);
+      ctx.closePath();
+      ctx.fill();
+
+      // Far-side arm bends forward and upward to reach the trishul.
+      ctx.fillStyle = '#80502f';
+      ctx.beginPath();
+      ctx.moveTo(20, -39);
+      ctx.quadraticCurveTo(23, -42, 26, -39);
+      ctx.quadraticCurveTo(29, -37, 28, -34);
+      ctx.lineTo(25, -32);
+      ctx.quadraticCurveTo(22, -33, 21, -36);
+      ctx.closePath();
+      ctx.fill();
+      ctx.fillStyle = '#74462c';
+      ctx.beginPath();
+      ctx.moveTo(26, -34);
+      ctx.quadraticCurveTo(27, -37, 30, -38);
+      ctx.lineTo(32, -39);
+      ctx.quadraticCurveTo(34, -38, 33, -36);
+      ctx.lineTo(30, -34);
+      ctx.quadraticCurveTo(28, -32, 26, -32);
+      ctx.closePath();
+      ctx.fill();
+      ctx.strokeStyle = '#50301f';
+      ctx.lineWidth = 0.8;
+      ctx.beginPath();
+      ctx.moveTo(30, -38);
+      ctx.quadraticCurveTo(31, -37, 33, -36);
+      ctx.stroke();
+
+      // Rugged face in profile, with a neat moustache and light jaw beard.
+      ctx.fillStyle = '#e4c09d';
+      ctx.beginPath();
+      ctx.ellipse(25, -48, 6.1, 7.6, 0.12, 0, Math.PI * 2);
+      ctx.fill();
+
+      ctx.fillStyle = '#bd8b67';
+      ctx.beginPath();
+      ctx.moveTo(29, -49);
+      ctx.lineTo(32, -47);
+      ctx.lineTo(29, -46);
+      ctx.closePath();
+      ctx.fill();
+
+      ctx.fillStyle = '#38291f';
+      ctx.beginPath();
+      ctx.moveTo(20, -45.5);
+      ctx.quadraticCurveTo(22, -46.5, 25, -45.8);
+      ctx.quadraticCurveTo(28, -46.2, 30, -45);
+      ctx.lineTo(30, -42.5);
+      ctx.quadraticCurveTo(28, -39.8, 25, -39.3);
+      ctx.quadraticCurveTo(22, -40, 20, -42.5);
+      ctx.closePath();
+      ctx.fill();
+
+      ctx.fillStyle = '#38291f';
+      ctx.beginPath();
+      ctx.moveTo(22, -46);
+      ctx.quadraticCurveTo(24, -47.5, 26, -46.1);
+      ctx.quadraticCurveTo(28, -47.2, 30, -45.8);
+      ctx.quadraticCurveTo(28, -45.1, 26, -45.7);
+      ctx.quadraticCurveTo(24, -45.2, 22, -46);
+      ctx.closePath();
+      ctx.fill();
+
+      ctx.strokeStyle = '#211713';
+      ctx.lineWidth = 1.1;
+      ctx.beginPath();
+      ctx.moveTo(25, -49);
+      ctx.lineTo(29, -49.5);
+      ctx.stroke();
+      ctx.fillStyle = '#201713';
+      ctx.fillRect(26.5, -48.5, 2.4, 0.8);
+      ctx.fillStyle = '#f0d4b8';
+      ctx.fillRect(29, -47, 1, 0.7);
+
+      // Heavy wavy hair, kept inside the original rider silhouette.
       const hairFlutter = Math.sin(time * 8) * 0.8;
-      ctx.fillStyle = '#18181b';
+      ctx.fillStyle = '#171514';
       ctx.beginPath();
-      ctx.moveTo(19, -56);
-      ctx.quadraticCurveTo(10, -58 + hairFlutter, 5, -51 + hairFlutter);
-      ctx.quadraticCurveTo(12, -45, 18, -47);
+      ctx.moveTo(19, -49);
+      ctx.quadraticCurveTo(15, -52, 15, -56 + hairFlutter);
+      ctx.quadraticCurveTo(17, -60, 21, -57);
+      ctx.quadraticCurveTo(24, -60, 27, -57);
+      ctx.quadraticCurveTo(31, -57, 31, -53);
+      ctx.quadraticCurveTo(28, -51, 24, -53);
+      ctx.quadraticCurveTo(21, -51, 19, -49);
       ctx.closePath();
       ctx.fill();
+      ctx.fillStyle = '#2b2521';
       ctx.beginPath();
-      ctx.arc(23, -55, 3.2, 0, Math.PI * 2);
-      ctx.arc(18, -52, 3, 0, Math.PI * 2);
+      ctx.arc(18, -55, 3.4, 0, Math.PI * 2);
+      ctx.arc(22, -57, 3.1, 0, Math.PI * 2);
+      ctx.arc(27, -55, 3.5, 0, Math.PI * 2);
+      ctx.arc(19, -51, 2.3, 0, Math.PI * 2);
       ctx.fill();
-
-      ctx.fillStyle = safariShirt;
+      ctx.strokeStyle = '#4a3b30';
+      ctx.lineWidth = 0.7;
       ctx.beginPath();
-      ctx.moveTo(19, -40);
-      ctx.lineTo(31, -54);
-      ctx.lineTo(35, -52);
-      ctx.lineTo(27, -38);
+      ctx.moveTo(18, -56);
+      ctx.quadraticCurveTo(21, -58, 23, -55);
+      ctx.moveTo(23, -57);
+      ctx.quadraticCurveTo(27, -59, 29, -55);
+      ctx.stroke();
+
+      // Dark-bead necklace on the chest.
+      ctx.strokeStyle = '#211915';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(20, -41);
+      ctx.quadraticCurveTo(24, -34, 29, -31);
+      ctx.stroke();
+      for (let bead = 0; bead < 5; bead++) {
+        ctx.fillStyle = bead % 2 === 0 ? '#211915' : '#67452e';
+        ctx.beginPath();
+        ctx.arc(20 + bead * 1.8, -40 + bead * 2, 0.85, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      // Near-side arm relaxes back onto the thigh.
+      ctx.fillStyle = '#74462c';
+      ctx.beginPath();
+      ctx.moveTo(28, -40);
+      ctx.quadraticCurveTo(32, -42, 34, -39);
+      ctx.quadraticCurveTo(36, -37, 34, -34);
+      ctx.lineTo(31, -32);
+      ctx.quadraticCurveTo(28, -34, 27, -37);
       ctx.closePath();
       ctx.fill();
-      ctx.fillStyle = '#3f2212';
-      ctx.fillRect(31, -53, 4, 4);
 
-      this.drawTrishul(ctx, 35, -55, -0.28, trishulGold, flagOrange, time);
+      ctx.fillStyle = '#80502f';
+      ctx.beginPath();
+      ctx.moveTo(33, -35);
+      ctx.quadraticCurveTo(35, -33, 33, -30);
+      ctx.lineTo(30, -27);
+      ctx.quadraticCurveTo(28, -26, 27, -28);
+      ctx.quadraticCurveTo(28, -31, 30, -34);
+      ctx.closePath();
+      ctx.fill();
+
+      this.drawTrishul(ctx, 31, -38, Math.PI / 4, trishulGold, flagOrange, time);
     }
 
     ctx.restore();
@@ -1304,6 +1488,7 @@ export class GameRenderer {
     ctx.save();
     ctx.translate(handX, handY);
     ctx.rotate(rotation);
+    ctx.scale(1, 0.8);
 
     // Golden Staff Shaft
     const staffGrad = ctx.createLinearGradient(-1.5, 15, 1.5, -45);
@@ -1365,6 +1550,27 @@ export class GameRenderer {
     ctx.quadraticCurveTo(-12, tridentTopY + 7 + wave, 0, tridentTopY + 6);
     ctx.closePath();
     ctx.fill();
+
+    // Hand wraps across the shaft at the grip point; the staff stays visible on both sides.
+    ctx.fillStyle = '#e4c09d';
+    ctx.strokeStyle = '#9d704f';
+    ctx.lineWidth = 0.65;
+    ctx.beginPath();
+    ctx.ellipse(2.1, 0.4, 3.1, 3.7, 0, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.stroke();
+
+    ctx.strokeStyle = '#e4c09d';
+    ctx.lineWidth = 1.7;
+    ctx.lineCap = 'round';
+    ctx.beginPath();
+    ctx.moveTo(4.2, -2.1);
+    ctx.quadraticCurveTo(1.3, -2.9, -1.4, -1.8);
+    ctx.moveTo(4.4, -0.2);
+    ctx.quadraticCurveTo(1.2, -1, -1.6, 0.1);
+    ctx.moveTo(4, 1.6);
+    ctx.quadraticCurveTo(1.1, 0.8, -1.3, 2);
+    ctx.stroke();
 
     ctx.restore();
   }
